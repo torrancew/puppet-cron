@@ -5,11 +5,19 @@ This module manages cronjobs by placing a file in /etc/cron.d.
 It defines the following types:
   * cron::job    - basic job skeleton
   * cron::hourly - template for hourly jobs
+  * cron::daily  - template for daily jobs
 
 ## Installation:
 Install in your puppet master's modulepath
 
+This module can install cron - simply
+<pre>
+include cron
+</pre>
+
 ## Usage:
+*The name of the job (quoted part after the opening { ) is completely arbitrary. However, there can only be one cron job by that name.*
+
 ### cron::job
 cron::job creates generic jobs in /etc/cron.d.
 It allows specifying the following parameters:
