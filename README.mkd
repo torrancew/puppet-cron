@@ -3,6 +3,7 @@
 ## Notes:
 This module manages cronjobs by placing a file in /etc/cron.d.
 It defines the following types:
+
   * cron::job    - basic job skeleton
   * cron::hourly - template for hourly jobs
   * cron::daily  - template for daily jobs
@@ -21,6 +22,7 @@ include cron
 ### cron::job
 cron::job creates generic jobs in /etc/cron.d.
 It allows specifying the following parameters:
+
   * minute
   * hour
   * date
@@ -47,6 +49,7 @@ cron::job{
 ### cron::hourly
 cron::hourly creates jobs in /etc/cron.d that run once per hour.
 It allows specifying the following parameters:
+
   * minute
   * user
   * command
@@ -65,6 +68,7 @@ cron::hourly{
 ### cron::daily
 cron::daily creates jobs in /etc/cron.d that run once per day.
 It allows specifying the following parameters:
+
   * minute
   * hour
   * user
