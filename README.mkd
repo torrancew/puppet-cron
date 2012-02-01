@@ -20,35 +20,60 @@ It allows specifying the following parameters:
   * day
   * user
   * command
+
+Example:
+  This would run the command "mysqlbackup mydb" as root at 2:40 AM every day:
 <pre>
 cron::job{
   'mysqlbackup'
-    minute  => '*',
-    hour    => '*',
+    minute  => '40',
+    hour    => '2',
     date    => '*',
     month   => '*',
     day     => '*',
     user    => 'root',
-    command => 'mysqlbackup my_db';
+    command => 'mysqlbackup mydb';
 }
 </pre>
 
 ### cron::hourly
-cron::hourly creates jobs in /etc/cron.d that run once per-hour.
+cron::hourly creates jobs in /etc/cron.d that run once per hour.
 It allows specifying the following parameters:
   * minute
   * user
   * command
+
+Example:
+  This would run the command "mysqlbackup mydb" as root on the 20th minute of every hour:
 <pre>
 cron::hourly{
-  'mysqlbackup'
+  'mysqlbackup_hourly'
     minute  => '20',
     user    => 'root',
-    command => 'mysqlbackup my_db';
+    command => 'mysqlbackup mydb';
+}
+</pre>
+
+### cron::daily
+cron::daily creates jobs in /etc/cron.d that run once per day.
+It allows specifying the following parameters:
+  * minute
+  * hour
+  * user
+  * command
+
+Example:
+  This would run the command "mysqlbackup mydb" as root at 2:40 AM every day, like the above generic example:
+<pre>
+cron::daily{
+  'mysqlbackup_daily'
+    minute  => '40',
+    hour    => '2',
+    user    => 'root',
+    command => 'mysqlbackup mydb';
 }
 </pre>
 
 ## TODO:
 Add shorcut types for:
-  cron::daily
   cron::monthly
