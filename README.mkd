@@ -1,0 +1,27 @@
+# Puppet Cron Module
+
+## Notes:
+This module manages cronjobs by placing a file in /etc/cron.d.
+
+## Installation:
+Install in your puppet master's modulepath
+
+## Usage:
+<pre>
+cron::job{
+  'mysqlbackup'
+    minute  => '*',
+    hour    => '*',
+    date    => '*',
+    month   => '*',
+    day     => '*',
+    user    => 'root',
+    command => 'mysqlbackup my_db';
+}
+</pre>
+
+## TODO:
+Add shorcut types for:
+  cron::hourly
+  cron::daily
+  cron::monthly
