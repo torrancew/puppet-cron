@@ -1,4 +1,4 @@
-define cron::job( $minute, $hour, $date, $month, $weekday, $user = 'root', $command ) {
+define cron::job( $minute = '*', $hour = '*', $date = '*', $month = '*', $weekday = '*', $user = 'root', $command ) {
   file {
     "job_${name}":
       ensure  => present,

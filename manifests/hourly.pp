@@ -5,7 +5,7 @@ define cron::hourly( $minute = 0, $user = 'root', $command ) {
       hour    => '*',
       date    => '*',
       month   => '*',
-      day     => '*',
+      weekday => '*',
       user    => $user,
       command => $command;
   }
