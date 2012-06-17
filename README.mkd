@@ -129,5 +129,5 @@ Example:
     }
 
 ## TODO:
-Add shorcut types for:
-  cron::monthly
+
+  * <strike>Add shorcut types for cron::monthly</strike>
