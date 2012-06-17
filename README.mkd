@@ -130,4 +130,3 @@ Example:
 
 ## TODO:
 
-  * <strike>Add shorcut types for cron::monthly</strike>
