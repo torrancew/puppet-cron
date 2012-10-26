@@ -2,5 +2,15 @@
 ### This file is managed by puppet, and is refreshed regularly. Edit at your own peril! ###
 ###########################################################################################
 ## <%= name %> Cron Job
+
+# environment: e.g. MAILTO, SHELL and PATH, you should probably at least set MAILTO
+# This accepts either a single string with embedded newlines or an array
+# environment => "foo=bar\nbaz=bam"
+# environment => [ "foo=bar", "baz="bam" ]
+
+<% Array(environment).join("\n").split(%r{\n}).each do |f| %>
+one line: <%= f %>
+<% end %>
+
 <%= minute %> <%= hour %> <%= date %> <%= month %> <%= weekday %>  <%= user %> <%= command %>
 
