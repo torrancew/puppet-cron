@@ -8,9 +8,13 @@
 # environment => "foo=bar\nbaz=bam"
 # environment => [ "foo=bar", "baz="bam" ]
 
-<% Array(environment).join("\n").split(%r{\n}).each do |f| %>
-one line: <%= f %>
-<% end %>
+<% if defined?(environment)
+     Array(environment).join("\n").split(%r{\n}).each do |f|
+       if f.match(%r{\S}) -%>
+<%= f %>
+<%     end
+     end
+   end -%>
 
 <%= minute %> <%= hour %> <%= date %> <%= month %> <%= weekday %>  <%= user %> <%= command %>
 
