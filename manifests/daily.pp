@@ -1,4 +1,4 @@
-define cron::daily( $minute = 0, $hour = 0, $user = 'root', $command ) {
+define cron::daily( $minute = 0, $hour = 0, $environment = [], $user = 'root', $command ) {
   cron::job {
     $name:
       minute  => $minute,

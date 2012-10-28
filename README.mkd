@@ -31,19 +31,21 @@ It allows specifying the following parameters:
   * weekday
   * user
   * command
+  * environment
 
 Example:
   This would run the command "mysqlbackup mydb" as root at 2:40 AM every day:
 
     cron::job{
-      'mysqlbackup'
-        minute  => '40',
-        hour    => '2',
-        date    => '*',
-        month   => '*',
-        weekday => '*',
-        user    => 'root',
-        command => 'mysqlbackup mydb';
+      'mysqlbackup':
+        minute      => '40',
+        hour        => '2',
+        date        => '*',
+        month       => '*',
+        weekday     => '*',
+        user        => 'root',
+        command     => 'mysqlbackup mydb',
+        environment => [ 'MAILTO=root', 'PATH="/usr/bin:/bin"' ];
     }
 
 ### cron::hourly
@@ -53,15 +55,17 @@ It allows specifying the following parameters:
   * minute
   * user
   * command
+  * environment
 
 Example:
   This would run the command "mysqlbackup mydb" as root on the 20th minute of every hour:
 
     cron::hourly{
-      'mysqlbackup_hourly'
-        minute  => '20',
-        user    => 'root',
-        command => 'mysqlbackup mydb';
+      'mysqlbackup_hourly':
+        minute      => '20',
+        user        => 'root',
+        command     => 'mysqlbackup mydb',
+        environment => "MAILTO=root\nPATH='/usr/bin:/bin'";
     }
 
 ### cron::daily
@@ -72,12 +76,13 @@ It allows specifying the following parameters:
   * hour
   * user
   * command
+  * environment
 
 Example:
   This would run the command "mysqlbackup mydb" as root at 2:40 AM every day, like the above generic example:
 
     cron::daily{
-      'mysqlbackup_daily'
+      'mysqlbackup_daily':
         minute  => '40',
         hour    => '2',
         user    => 'root',
@@ -93,12 +98,13 @@ It allows specifying the following parameters:
   * weekday
   * user
   * command
+  * environment
 
 Example:
   This would run the command "mysqlbackup mydb" as root at 4:40 AM every Sunday, like the above generic example:
 
     cron::weekly{
-      'mysqlbackup_weekly'
+      'mysqlbackup_weekly':
         minute  => '40',
         hour    => '4',
         weekday => '0',
@@ -115,18 +121,22 @@ It allows specifying the following parameters:
   * date
   * user
   * command
+  * environment
 
 Example:
   This would run the command "mysqlbackup mydb" as root at 3:40 AM the 1st of every month, like the above generic example:
 
     cron::monthly{
-      'mysqlbackup_monthly'
+      'mysqlbackup_monthly':
         minute  => '40',
         hour    => '3',
         date    => '1',
         user    => 'root',
         command => 'mysqlbackup mydb';
     }
+
+## Contributors:
+  * Kevin Goess (@kgoess) - Environment Variable support
 
 ## TODO:
 

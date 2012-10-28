@@ -1,4 +1,4 @@
-define cron::monthly( $minute = 0, $hour = 0, $date = 1, $user = 'root', $command ) {
+define cron::monthly( $minute = 0, $hour = 0, $date = 1, $environment = [], $user = 'root', $command ) {
   cron::job {
     $name:
       minute  => $minute,
