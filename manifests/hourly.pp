@@ -1,4 +1,4 @@
-define cron::hourly( $minute = 0, $user = 'root', $command ) {
+define cron::hourly( $minute = 0, $environment = [], $user = 'root', $command ) {
   cron::job {
     $name:
       minute  => $minute,

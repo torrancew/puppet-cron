@@ -3,18 +3,13 @@
 ###########################################################################################
 ## <%= name %> Cron Job
 
-# environment: e.g. MAILTO, SHELL and PATH, you should probably at least set MAILTO
-# This accepts either a single string with embedded newlines or an array
-# environment => "foo=bar\nbaz=bam"
-# environment => [ "foo=bar", "baz="bam" ]
-
-<% if defined?(environment)
-     Array(environment).join("\n").split(%r{\n}).each do |f|
-       if f.match(%r{\S}) -%>
-<%= f %>
-<%     end
-     end
+# Environment Settings
+<% Array(environment).join("\n").split(%r{\n}).each do |env_var|
+     if env_var.match(%r{\S}) -%>
+<%= env_var %>
+<%   end
    end -%>
 
-<%= minute %> <%= hour %> <%= date %> <%= month %> <%= weekday %>  <%= user %> <%= command %>
+# Job Definition
+<%= minute %> <%= hour %> <%= date %> <%= month %> <%= weekday %>  <%= user %>  <%= command %>
 

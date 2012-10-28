@@ -1,4 +1,4 @@
-define cron::weekly( $minute = 0, $hour = 0, $weekday = 0, $user = 'root', $command ) {
+define cron::weekly( $minute = 0, $hour = 0, $weekday = 0, $environment = [], $user = 'root', $command ) {
   cron::job {
     $name:
       minute  => $minute,
