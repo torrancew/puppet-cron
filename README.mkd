@@ -139,4 +139,6 @@ Example:
   * Kevin Goess (@kgoess) - Environment Variable support
 
 ## TODO:
+  * Add PuppetDoc markup to manifests
+  * Add a Modulefile, upload to the Puppet Forge
 
