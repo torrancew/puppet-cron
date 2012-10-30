@@ -11,7 +11,7 @@ It defines the following types:
   * cron::monthly - wrapper for monthly jobs
 
 ## Installation:
-Install in your puppet master's modulepath
+Install in your puppet master's modulepath as a directory named 'cron'.
 
 This module can install cron if needed - simply
 
