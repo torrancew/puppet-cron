@@ -1,7 +1,7 @@
 class cron::install {
   $package_name = $operatingsystem ? {
-    /(RedHat|CentOS)/ => 'cronie',
-    default           => 'cron',
+    /(RedHat|CentOS|OracleLinux)/ => 'cronie',
+    default                       => 'cron',
   }
 
   package { $package_name: ensure => present }
