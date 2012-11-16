@@ -10,7 +10,7 @@ describe 'cron::hourly' do
   }}
 
   it do
-    should contain_cron__job( 'mysql_backup' ).with(
+    should contain_cron__job( title ).with(
       'minute'      => params[:minute],
       'hour'        => '*',
       'date'        => '*',
