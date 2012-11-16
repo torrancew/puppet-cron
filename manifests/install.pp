@@ -4,5 +4,10 @@ class cron::install {
     default                       => 'cron',
   }
 
-  package { $package_name: ensure => present }
+  package {
+    'cron':
+      ensure => installed,
+      name   => $package_name;
+  }
 }
+
