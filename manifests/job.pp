@@ -3,12 +3,12 @@ define cron::job(
   $environment = [], $user = 'root', $command
 ) {
   file {
-    "job_${name}":
+    "job_${title}":
       ensure  => file,
       owner   => root,
       group   => root,
       mode    => 0640,
-      path    => "/etc/cron.d/${name}",
+      path    => "/etc/cron.d/${title}",
       content => template( 'cron/job.erb' );
   }
 }
