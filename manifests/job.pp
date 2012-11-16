@@ -4,7 +4,7 @@ define cron::job(
 ) {
   file {
     "job_${name}":
-      ensure  => present,
+      ensure  => file,
       owner   => root,
       group   => root,
       mode    => 0640,
