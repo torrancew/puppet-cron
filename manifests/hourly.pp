@@ -1,6 +1,6 @@
 define cron::hourly( $minute = 0, $environment = [], $user = 'root', $command ) {
   cron::job {
-    $name:
+    $title:
       minute      => $minute,
       hour        => '*',
       date        => '*',
