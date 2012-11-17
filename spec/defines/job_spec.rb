@@ -25,7 +25,7 @@ describe 'cron::job' do
       'owner'   => 'root',
       'group'   => 'root',
       'mode'    => '0640',
-      'path'    => "/etc/cron.d/#{title}",
+      'path'    => "/etc/cron.d/#{title}"
     ).with_content(
       /\n#{params[:environment].join('\n')}\n/
     ).with_content(

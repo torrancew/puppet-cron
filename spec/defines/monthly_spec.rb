@@ -20,7 +20,7 @@ describe 'cron::monthly' do
       'weekday'     => '*',
       'user'        => params[:user],
       'environment' => params[:environment],
-      'command'     => params[:command],
+      'command'     => params[:command]
     )
   end
 end
