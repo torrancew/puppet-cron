@@ -1,5 +1,9 @@
 # Puppet Cron Module
 
+## Build Status:
+  * **master:** [![master branch status](https://secure.travis-ci.org/torrancew/puppet-cron.png?branch=master)](http://travis-ci.org/torrancew/puppet-cron)
+  * **develop:** [![develop branch status](https://secure.travis-ci.org/torrancew/puppet-cron.png?branch=develop)](http://travis-ci.org/torrancew/puppet-cron)
+
 ## Notes:
 This module manages cronjobs by placing a file in /etc/cron.d.
 It defines the following types:
