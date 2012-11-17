@@ -3,8 +3,5 @@ rvm:
   - 1.8.7
   - 1.9.3
 
-before_install:
-  - gem install puppet rspec rspec-puppet puppetlabs_spec_helper
-
-script: rspec --color --format doc spec/
+gemfile: .travis/Gemfile
 
