@@ -38,8 +38,8 @@ define cron::job(
   file {
     "job_${title}":
       ensure  => file,
-      owner   => root,
-      group   => root,
+      owner   => 'root',
+      group   => 'root',
       mode    => 0640,
       path    => "/etc/cron.d/${title}",
       content => template( 'cron/job.erb' );
