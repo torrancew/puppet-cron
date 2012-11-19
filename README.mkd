@@ -136,7 +136,8 @@ Example:
     }
 
 ## Contributors:
-  * Kevin Goess (@kgoess) - Environment Variable support
+  * Kevin Goess (@kgoess)   - Environment Variable support + fixes
+  * Andy Shinn (@andyshinn) - RedHat derivatives package name fix 
 
 ## TODO:
   * Add PuppetDoc markup to manifests
