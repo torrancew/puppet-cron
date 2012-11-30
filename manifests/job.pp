@@ -1,13 +1,13 @@
 define cron::job(
   $minute = '*', $hour = '*', $date = '*', $month = '*', $weekday = '*',
-  $environment = [], $user = 'root', $command
+  $environment = [], $user = 'root', $mode = '0644', $command
 ) {
   file {
     "job_${name}":
       ensure  => present,
       owner   => root,
       group   => root,
-      mode    => 0640,
+      mode    => $mode,
       path    => "/etc/cron.d/${name}",
       content => template( 'cron/job.erb' );
   }
