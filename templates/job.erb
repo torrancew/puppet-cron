@@ -5,10 +5,13 @@
 
 # Environment Settings
 <% Array(environment).join("\n").split(%r{\n}).each do |env_var|
-     if env_var.match(%r{\S}) -%>
-<%= env_var %>
-<%   end
-   end -%>
+      if env_var.match(%r{^\S+=\S+}) %>
+<%= env_var -%>
+<%    elsif env_var.match(%r{\S}) %>
+# possible error from puppet, doesn't look like "name=value": <%= env_var -%>
+<%   #else is only whitespace, so no output
+    end
+   end %>
 
 # Job Definition
 <%= minute %> <%= hour %> <%= date %> <%= month %> <%= weekday %>  <%= user %>  <%= command %>
