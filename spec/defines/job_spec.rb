@@ -12,14 +12,9 @@ describe 'cron::job' do
     :user        => 'root',
     :command     => 'mysqldump -u root test_db >some_file',
   }}
+  let( :cron_timestamp ) { get_timestamp( params ) }
 
   it do
-    cron_timestamp = ""
-    [ :minute, :hour, :date, :month, :weekday ].each do |k|
-      cron_timestamp << "#{params[k]} "
-    end
-    cron_timestamp.strip!
-
     should contain_file( "job_#{title}" ).with(
       'ensure'  => 'file',
       'owner'   => 'root',

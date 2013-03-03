@@ -7,3 +7,11 @@ RSpec.configure do |spec|
   spec.manifest_dir = File.join( fixture_path, 'manifests' )
 end
 
+def get_timestamp( params = {} )
+  stamp = ''
+  [ :minute, :hour, :date, :month, :weekday ].each do |k|
+    stamp << "#{params[k] || '*'} "
+  end
+  return stamp.strip
+end
+
