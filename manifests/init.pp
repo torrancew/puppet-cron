@@ -1,11 +1,11 @@
-# Class: puppet
+# Class: cron
 #
 # This class wraps *cron::instalL* for ease of use
 #
 # Parameters:
-# 
+#
 # Actions:
-# 
+#
 # Requires:
 #
 # Sample Usage:
