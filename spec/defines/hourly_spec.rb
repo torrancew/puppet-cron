@@ -3,10 +3,8 @@ require 'spec_helper'
 describe 'cron::hourly' do
   let( :title )  { 'mysql_backup' }
   let( :params ) {{
-    :minute      => '59',
-    :environment => [],
-    :user        => 'root',
-    :command     => 'mysqldump -u root test_db >some_file'
+    :minute  => '59',
+    :command => 'mysqldump -u root test_db >some_file'
   }}
 
   it do
@@ -16,9 +14,10 @@ describe 'cron::hourly' do
       'date'        => '*',
       'month'       => '*',
       'weekday'     => '*',
-      'user'        => params[:user],
-      'environment' => params[:environment],
-      'command'     => params[:command]
+      'user'        => params[:user] || 'root',
+      'environment' => params[:environment] || [],
+      'mode'        => params[:mode] || '0644',
+      'command'     => params[:command],
     )
   end
 end

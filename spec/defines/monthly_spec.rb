@@ -6,8 +6,6 @@ describe 'cron::monthly' do
     :minute      => '59',
     :hour        => '1',
     :date        => '20',
-    :environment => [],
-    :user        => 'root',
     :command     => 'mysqldump -u root test_db >some_file'
   }}
 
@@ -18,8 +16,9 @@ describe 'cron::monthly' do
       'date'        => params[:date],
       'month'       => '*',
       'weekday'     => '*',
-      'user'        => params[:user],
-      'environment' => params[:environment],
+      'user'        => params[:user] || 'root',
+      'environment' => params[:environment] || [],
+      'mode'        => params[:mode] || '0644',
       'command'     => params[:command]
     )
   end

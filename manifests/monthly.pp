@@ -13,6 +13,8 @@
 #     Defaults to an empty set ([]).
 #   user - The user the cron job should be executed as.
 #     Defaults to 'root'.
+#   mode - The mode to set on the created job file
+#     Defaults to 0644.
 #   command - The command to execute.
 #
 # Actions:
@@ -29,7 +31,7 @@
 #       command     => 'find /var/log -type f -ctime +30 -exec rm -f {} \;';
 #   }
 
-define cron::monthly( $minute = 0, $hour = 0, $date = 1, $environment = [], $user = 'root', $command ) {
+define cron::monthly( $minute = 0, $hour = 0, $date = 1, $environment = [], $user = 'root', $mode = 0644, $command ) {
   cron::job {
     $title:
       minute      => $minute,
@@ -39,6 +41,7 @@ define cron::monthly( $minute = 0, $hour = 0, $date = 1, $environment = [], $use
       weekday     => '*',
       user        => $user,
       environment => $environment,
+      mode        => $mode,
       command     => $command;
   }
 }

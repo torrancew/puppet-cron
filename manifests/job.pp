@@ -15,6 +15,8 @@
 #     Defaults to '*'.
 #   environment - An array of environment variable settings.
 #     Defaults to an empty set ([]).
+#   mode - The mode to set on the created job file
+#     Defaults to 0644.
 #   user - The user the cron job should be executed as.
 #     Defaults to 'root'.
 #   command - The command to execute.
@@ -33,14 +35,14 @@
 
 define cron::job(
   $minute = '*', $hour = '*', $date = '*', $month = '*', $weekday = '*',
-  $environment = [], $user = 'root', $command
+  $environment = [], $user = 'root', $mode = 0644, $command
 ) {
   file {
     "job_${title}":
       ensure  => file,
-      owner   => 'root',
+      owner   => $user,
       group   => 'root',
-      mode    => 0640,
+      mode    => $mode,
       path    => "/etc/cron.d/${title}",
       content => template( 'cron/job.erb' );
   }

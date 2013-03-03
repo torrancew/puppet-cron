@@ -11,6 +11,8 @@
 #     Defaults to an empty set ([]).
 #   user - The user the cron job should be executed as.
 #     Defaults to 'root'.
+#   mode - The mode to set on the created job file
+#     Defaults to 0644.
 #   command - The command to execute.
 #
 # Actions:
@@ -26,7 +28,7 @@
 #       command     => 'mysqldump -u root my_db >/mnt/backups/db/daily/my_db_$(date "+%Y%m%d").sql';
 #   }
 
-define cron::daily( $minute = 0, $hour = 0, $environment = [], $user = 'root', $command ) {
+define cron::daily( $minute = 0, $hour = 0, $environment = [], $user = 'root', $mode = 0644, $command ) {
   cron::job {
     $title:
       minute      => $minute,
@@ -36,6 +38,7 @@ define cron::daily( $minute = 0, $hour = 0, $environment = [], $user = 'root', $
       weekday     => '*',
       user        => $user,
       environment => $environment,
+      mode        => $mode,
       command     => $command;
   }
 }

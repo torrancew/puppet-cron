@@ -13,6 +13,8 @@
 #     Defaults to an empty set ([]).
 #   user - The user the cron job should be executed as.
 #     Defaults to 'root'.
+#   mode - The mode to set on the created job file
+#     Defaults to 0644.
 #   command - The command to execute.
 #
 # Actions:
@@ -29,7 +31,7 @@
 #       command     => 'find /tmp -type f -ctime +7 -exec rm -f {} \;';
 #   }
 
-define cron::weekly( $minute = 0, $hour = 0, $weekday = 0, $environment = [], $user = 'root', $command ) {
+define cron::weekly( $minute = 0, $hour = 0, $weekday = 0, $environment = [], $user = 'root', $mode = 0640, $command ) {
   cron::job {
     $title:
       minute      => $minute,
@@ -39,6 +41,7 @@ define cron::weekly( $minute = 0, $hour = 0, $weekday = 0, $environment = [], $u
       weekday     => $weekday,
       user        => $user,
       environment => $environment,
+      mode        => $mode,
       command     => $command;
   }
 }

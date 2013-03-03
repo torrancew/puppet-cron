@@ -5,7 +5,10 @@
 # Parameters:
 #   minute - The minute the cron job should fire on. Can be any valid cron minute value.
 #     Defaults to '0'.
-#   environment - An array of environment variable settings. Defaults to an empty set ([]).
+#   environment - An array of environment variable settings.
+#     Defaults to an empty set ([]).
+#   mode - The mode to set on the created job file
+#     Defaults to 0644.
 #   user - The user the cron job should be executed as. Defaults to 'root'.
 #   command - The command to execute.
 #
@@ -21,7 +24,7 @@
 #       command     => 'puppet doc --modulepath /etc/puppet/modules >/var/www/puppet_docs.mkd';
 #   }
 
-define cron::hourly( $minute = 0, $environment = [], $user = 'root', $command ) {
+define cron::hourly( $minute = 0, $environment = [], $user = 'root', $mode = 0644, $command ) {
   cron::job {
     $title:
       minute      => $minute,
@@ -31,6 +34,7 @@ define cron::hourly( $minute = 0, $environment = [], $user = 'root', $command ) 
       weekday     => '*',
       user        => $user,
       environment => $environment,
+      mode        => $mode,
       command     => $command;
   }
 }
