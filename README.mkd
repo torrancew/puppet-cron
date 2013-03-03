@@ -1,10 +1,12 @@
 # Puppet Cron Module
 
 ## Build Status:
+
   * **master:** [![master branch status](https://secure.travis-ci.org/torrancew/puppet-cron.png?branch=master)](http://travis-ci.org/torrancew/puppet-cron)
   * **develop:** [![develop branch status](https://secure.travis-ci.org/torrancew/puppet-cron.png?branch=develop)](http://travis-ci.org/torrancew/puppet-cron)
 
 ## Notes:
+
 This module manages cronjobs by placing a file in /etc/cron.d.
 It defines the following types:
 
@@ -15,6 +17,7 @@ It defines the following types:
   * cron::monthly - wrapper for monthly jobs
 
 ## Installation:
+
 Install in your puppet master's modulepath as a directory named 'cron'.
 
 This module can install cron if needed - simply
@@ -22,9 +25,11 @@ This module can install cron if needed - simply
     include cron
 
 ## Usage:
+
 *The name of the job (quoted part after the opening '{' ) is completely arbitrary. However, there can only be one cron job by that name.*
 
 ### cron::job
+
 cron::job creates generic jobs in /etc/cron.d.
 It allows specifying the following parameters:
 
@@ -53,6 +58,7 @@ Example:
     }
 
 ### cron::hourly
+
 cron::hourly creates jobs in /etc/cron.d that run once per hour.
 It allows specifying the following parameters:
 
@@ -73,6 +79,7 @@ Example:
     }
 
 ### cron::daily
+
 cron::daily creates jobs in /etc/cron.d that run once per day.
 It allows specifying the following parameters:
 
@@ -94,6 +101,7 @@ Example:
     }
 
 ### cron::weekly
+
 cron::weekly creates jobs in /etc/cron.d that run once per week.
 It allows specifying the following parameters:
 
@@ -117,6 +125,7 @@ Example:
     }
 
 ### cron::monthly
+
 cron::monthly creates jobs in /etc/cron.d that run once per month.
 It allows specifying the following parameters:
 
@@ -140,10 +149,12 @@ Example:
     }
 
 ## Contributors:
+
   * Kevin Goess (@kgoess)   - Environment Variable support + fixes
   * Andy Shinn (@andyshinn) - RedHat derivatives package name fix 
 
 ## TODO:
-  * Add PuppetDoc markup to manifests
-  * Add a Modulefile, upload to the Puppet Forge
+
+  * <del>Add PuppetDoc markup to manifests</del>
+  * <del>Add a Modulefile, upload to the Puppet Forge</del>
 
