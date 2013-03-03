@@ -17,7 +17,7 @@ describe 'cron::hourly' do
       'user'        => params[:user] || 'root',
       'environment' => params[:environment] || [],
       'mode'        => params[:mode] || '0644',
-      'command'     => params[:command],
+      'command'     => params[:command]
     )
   end
 end
