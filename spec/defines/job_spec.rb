@@ -39,7 +39,7 @@ describe 'cron::job' do
     it do
       should contain_file( "job_#{title}" ).with(
         'owner'   => params[:user],
-        'mode'    => params[:mode],
+        'mode'    => params[:mode]
       ).with_content(
         /\n#{params[:environment].join('\n')}\n/
       ).with_content(
