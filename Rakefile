@@ -11,7 +11,6 @@ RSpec::Core::RakeTask.new( :spec ) do |task|
 end
 
 task :build => [:spec, :clean] do
-  puts ''
   `puppet module build`
 
   # TODO: Find a way to package without such a nasty hack
@@ -22,7 +21,6 @@ task :build => [:spec, :clean] do
 
   # Blow away and re-create the module without specs
   # (Works around https://github.com/torrancew/puppet-cron/issues/12)
-  puts `tar tvzf #{pkg}`
   FileUtils.rm_f  pkg
   Dir["#{pkg_dir}/{Rakefile,spec}"].each { |f| FileUtils.rm_rf f }
 
@@ -35,7 +33,6 @@ task :build => [:spec, :clean] do
   File.open("#{pkg_dir}/metadata.json", 'w') { |f| f.write(JSON.dump(metadata)) }
   puts 'Building module'
   `tar cvzf #{pkg} -C pkg/ #{name}-#{version}/`
-  puts `tar tvzf #{pkg}`
 end
 
 task :clean do
