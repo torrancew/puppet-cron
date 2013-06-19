@@ -40,7 +40,7 @@ define cron::job(
   file {
     "job_${title}":
       ensure  => file,
-      owner   => $user,
+      owner   => 'root',
       group   => 'root',
       mode    => $mode,
       path    => "/etc/cron.d/${title}",
