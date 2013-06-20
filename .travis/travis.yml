@@ -5,11 +5,11 @@ rvm:
   - 1.9.3
   - 2.0.0
 env:
-  - PUPPET_VERSION=2.7.22
-  - PUPPET_VERSION=3.2.2
-matrix:
-  exclude:
-    - rvm: 2.0.0
-      env: PUPPET_VERSION=2.7.22
+  matrix:
+    - PUPPET_VERSION=2.7.22
+    - PUPPET_VERSION=3.2.2
+    exclude:
+      - rvm: 2.0.0
+        env: PUPPET_VERSION=2.7.22
 gemfile: .travis/Gemfile
 
