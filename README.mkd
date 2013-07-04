@@ -150,8 +150,11 @@ Example:
 
 ## Contributors:
 
-  * Kevin Goess (@kgoess)   - Environment Variable support + fixes
-  * Andy Shinn (@andyshinn) - RedHat derivatives package name fix 
+  * Kevin Goess (@kgoess)               - Environment variable support + fixes
+  * Andy Shinn (@andyshinn)             - RedHat derivatives package name fix 
+  * Chris Weyl (@RsrchBoy)              - Fixed Puppet 3.2 deprecation warnings
+  * Mathew Archibald (@mattyindustries) - Fixed file ownership issues
+
 
 ## TODO:
 
