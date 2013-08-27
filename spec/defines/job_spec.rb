@@ -51,5 +51,16 @@ describe 'cron::job' do
       )
     end
   end
+
+  describe 'job with ensure set to absent' do
+    let( :params ) {{
+      :ensure  => 'absent',
+      :command => 'mysqldump -u root test_db >some_file',
+    }}
+
+    it do
+      should contain_file( "job_#{title}" ).with( 'ensure' => 'absent' )
+    end
+  end
 end
 

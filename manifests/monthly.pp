@@ -3,6 +3,8 @@
 # This type creates a monthly cron job via a file in /etc/cron.d
 # 
 # Parameters:
+#   ensure - The state to ensure this resource exists in. Can be absent, present
+#     Defaults to 'present'
 #   minute - The minute the cron job should fire on. Can be any valid cron minute value.
 #     Defaults to '0'.
 #   hour - The hour the cron job should fire on. Can be any valid cron hour value.
@@ -31,9 +33,13 @@
 #       command     => 'find /var/log -type f -ctime +30 -exec rm -f {} \;';
 #   }
 
-define cron::monthly( $minute = 0, $hour = 0, $date = 1, $environment = [], $user = 'root', $mode = 0644, $command ) {
+define cron::monthly(
+  $minute = 0, $hour = 0, $date = 1, $environment = [],
+  $user = 'root', $mode = 0644, $ensure = 'present', $command
+) {
   cron::job {
     $title:
+      ensure      => $ensure,
       minute      => $minute,
       hour        => $hour,
       date        => $date,

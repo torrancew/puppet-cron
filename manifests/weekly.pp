@@ -3,6 +3,8 @@
 # This type creates a cron job via a file in /etc/cron.d
 # 
 # Parameters:
+#   ensure - The state to ensure this resource exists in. Can be absent, present
+#     Defaults to 'present'
 #   minute - The minute the cron job should fire on. Can be any valid cron minute value.
 #     Defaults to '0'.
 #   hour - The hour the cron job should fire on. Can be any valid cron hour value.
@@ -31,9 +33,13 @@
 #       command     => 'find /tmp -type f -ctime +7 -exec rm -f {} \;';
 #   }
 
-define cron::weekly( $minute = 0, $hour = 0, $weekday = 0, $environment = [], $user = 'root', $mode = 0640, $command ) {
+define cron::weekly(
+  $minute = 0, $hour = 0, $weekday = 0, $environment = [],
+  $user = 'root', $mode = 0640, $ensure = 'present', $command
+) {
   cron::job {
     $title:
+      ensure      => $ensure,
       minute      => $minute,
       hour        => $hour,
       date        => '*',

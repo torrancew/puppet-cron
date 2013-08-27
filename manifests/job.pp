@@ -3,6 +3,8 @@
 # This type creates a cron job via a file in /etc/cron.d
 # 
 # Parameters:
+#   ensure - The state to ensure this resource exists in. Can be absent, present
+#     Defaults to 'present'
 #   minute - The minute the cron job should fire on. Can be any valid cron minute value.
 #     Defaults to '*'.
 #   hour - The hour the cron job should fire on. Can be any valid cron hour value.
@@ -32,14 +34,20 @@
 #       environment => [ 'PATH="/usr/sbin:/usr/bin:/sbin:/bin"' ],
 #       command     => 'puppet doc --modulepath /etc/puppet/modules >/var/www/puppet_docs.mkd';
 #   }
-
 define cron::job(
   $minute = '*', $hour = '*', $date = '*', $month = '*', $weekday = '*',
-  $environment = [], $user = 'root', $mode = 0644, $command
+  $environment = [], $user = 'root', $mode = 0644, $ensure = 'present', $command
 ) {
+
+  case $ensure {
+    "present": { $real_ensure = file }
+    "absent":  { $real_ensure = absent }
+    default:   { fail("Invalid value '${ensure}' used for ensure") }
+  }
+
   file {
     "job_${title}":
-      ensure  => file,
+      ensure  => $real_ensure,
       owner   => 'root',
       group   => 'root',
       mode    => $mode,
