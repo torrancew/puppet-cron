@@ -33,6 +33,7 @@ This module can install cron if needed - simply
 cron::job creates generic jobs in /etc/cron.d.
 It allows specifying the following parameters:
 
+  * ensure
   * minute
   * hour
   * date
@@ -62,6 +63,7 @@ Example:
 cron::hourly creates jobs in /etc/cron.d that run once per hour.
 It allows specifying the following parameters:
 
+  * ensure
   * minute
   * user
   * command
@@ -83,6 +85,7 @@ Example:
 cron::daily creates jobs in /etc/cron.d that run once per day.
 It allows specifying the following parameters:
 
+  * ensure
   * minute
   * hour
   * user
@@ -105,6 +108,7 @@ Example:
 cron::weekly creates jobs in /etc/cron.d that run once per week.
 It allows specifying the following parameters:
 
+  * ensure
   * minute
   * hour
   * weekday
@@ -129,6 +133,7 @@ Example:
 cron::monthly creates jobs in /etc/cron.d that run once per month.
 It allows specifying the following parameters:
 
+  * ensure
   * minute
   * hour
   * date
@@ -154,6 +159,7 @@ Example:
   * Andy Shinn (@andyshinn)             - RedHat derivatives package name fix 
   * Chris Weyl (@RsrchBoy)              - Fixed Puppet 3.2 deprecation warnings
   * Mathew Archibald (@mattyindustries) - Fixed file ownership issues
+  * The Community                       - Continued improvement of this module via bugs and patches
 
 
 ## TODO:

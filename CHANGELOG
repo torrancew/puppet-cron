@@ -1,3 +1,7 @@
+v0.1.0: 2013-08-27
+Changes:
+  * Add support for the "ensure" parameter
+
 v0.0.3: 2013-07-04
 Changes:
   * Make job files owned by root
