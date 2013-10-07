@@ -1,7 +1,7 @@
 # Type: cron::hourly
-# 
+#
 # This type creates an hourly cron job via a file in /etc/cron.d
-# 
+#
 # Parameters:
 #   ensure - The state to ensure this resource exists in. Can be absent, present
 #     Defaults to 'present'
@@ -26,8 +26,8 @@
 #       command     => 'puppet doc --modulepath /etc/puppet/modules >/var/www/puppet_docs.mkd';
 #   }
 define cron::hourly(
-  $minute = 0, $environment = [], $user = 'root',
-  $mode = 0644, $ensure = 'present', $command
+  $command, $minute = 0, $environment = [],
+  $user = 'root', $mode = '0644', $ensure = 'present'
 ) {
   cron::job {
     $title:

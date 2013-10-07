@@ -1,7 +1,7 @@
 # Type: cron::monthly
-# 
+#
 # This type creates a monthly cron job via a file in /etc/cron.d
-# 
+#
 # Parameters:
 #   ensure - The state to ensure this resource exists in. Can be absent, present
 #     Defaults to 'present'
@@ -34,8 +34,8 @@
 #   }
 
 define cron::monthly(
-  $minute = 0, $hour = 0, $date = 1, $environment = [],
-  $user = 'root', $mode = 0644, $ensure = 'present', $command
+  $command, $minute = 0, $hour = 0, $date = 1,
+  $environment = [], $user = 'root', $mode = 0644, $ensure = 'present'
 ) {
   cron::job {
     $title:
