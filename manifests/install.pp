@@ -15,6 +15,8 @@
 class cron::install {
   $package_name = $::operatingsystem ? {
     /(RedHat|CentOS|Amazon|OracleLinux)/ => 'cronie',
+    'Gentoo'                             => 'sys-process/vixie-cron',
+    'Ubuntu'                             => 'cron',
     default                              => 'cron',
   }
 
