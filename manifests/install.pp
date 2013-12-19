@@ -3,6 +3,7 @@
 # This class ensures that the distro-appropriate cron package is installed
 #
 # Parameters:
+#   package_ensure - Can be set to a package version, 'latest', 'installed' or 'present'.
 #
 # Actions:
 #
@@ -12,7 +13,9 @@
 #   This class should not be used directly under normal circumstances
 #   Instead, use the *cron* class.
 
-class cron::install {
+class cron::install (
+  $package_ensure = 'installed'
+) {
   $package_name = $::operatingsystem ? {
     /(RedHat|CentOS|Amazon|OracleLinux)/ => 'cronie',
     default                              => 'cron',
@@ -20,7 +23,7 @@ class cron::install {
 
   package {
     'cron':
-      ensure => installed,
+      ensure => $package_ensure,
       name   => $package_name;
   }
 }
