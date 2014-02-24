@@ -35,6 +35,7 @@
 #      weekday     => '*',
 #      environment => [ 'PATH="/usr/sbin:/usr/bin:/sbin:/bin"' ],
 #      command     => 'mysqldump -u root my_db >/mnt/backups/db/daily/my_db_$(date "+%Y%m%d").sql';
+#    }
 #  }
 #
 #  cron::jobs { $name:
