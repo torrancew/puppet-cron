@@ -2,3 +2,6 @@
 fixtures:
   symlinks:
     cron: "#{source_dir}"
+  repositories:
+    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib"
+
