@@ -12,7 +12,7 @@ define cron::multiple
         default: { fail("Invalid value '${ensure}' used for ensure") }
     }
 
-    $file = "${crond_path/${title}"
+    $file = "${crond_path}/${title}"
     $job_defaults = { 
         'file'          => $file,
     }
