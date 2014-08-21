@@ -1,7 +1,7 @@
 # Type: cron::job
-# 
+#
 # This type creates a cron job via a file in /etc/cron.d
-# 
+#
 # Parameters:
 #   ensure - The state to ensure this resource exists in. Can be absent, present
 #     Defaults to 'present'
@@ -36,23 +36,32 @@
 #   }
 define cron::job(
   $minute = '*', $hour = '*', $date = '*', $month = '*', $weekday = '*',
-  $environment = [], $user = 'root', $mode = 0644, $ensure = 'present', $command
+  $environment = [], $user = 'root', $mode = 0644, $ensure = 'present', $command = ''
 ) {
 
   case $ensure {
-    "present": { $real_ensure = file }
-    "absent":  { $real_ensure = absent }
-    default:   { fail("Invalid value '${ensure}' used for ensure") }
-  }
-
-  file {
-    "job_${title}":
-      ensure  => $real_ensure,
-      owner   => 'root',
-      group   => 'root',
-      mode    => $mode,
-      path    => "/etc/cron.d/${title}",
-      content => template( 'cron/job.erb' );
+    "present": {
+      if $command == '' {
+        fail("When 'ensure' is set to 'present', 'command' must be set")
+      }
+      file {
+        "job_${title}":
+          ensure  => file,
+          owner   => 'root',
+          group   => 'root',
+          mode    => $mode,
+          path    => "/etc/cron.d/${title}",
+          content => template( 'cron/job.erb' )
+      }
+    }
+    "absent": {
+      file {
+        "job_${title}":
+          ensure  => absent,
+          path    => "/etc/cron.d/${title}"
+      }
+    }
+    default: { fail("Invalid value '${ensure}' used for ensure") }
   }
 }
 
