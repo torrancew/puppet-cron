@@ -9,3 +9,10 @@ def get_timestamp( params = {} )
   return stamp.strip
 end
 
+def get_cronline( job = {} ) 
+    cronline = '' 
+    [ 'minute', 'hour', 'date', 'month', 'weekday', 'user', 'command' ].each do |k|  
+      cronline << "#{job[k]} " 
+    end  
+    return cronline.strip 
+end 
