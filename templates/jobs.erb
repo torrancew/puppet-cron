@@ -12,7 +12,7 @@
 <%   end
    end -%>
 
-<% @jobs.each do | name, job | %>
+<% Array(@jobs).each do | name, job | %>
 # <%= name %>
-<%= job['minute'] %>  <%= job['hour'] %>  <%= job['date'] %>  <%= job['month'] %>  <%= job['weekday'] %>  <%= job['user'] %>  <%= job['command'] %>
+<%= job['minute'] %> <%= job['hour'] %> <%= job['date'] %> <%= job['month'] %> <%= job['weekday'] %> <%= job['user'] %> <%= job['command'] %>
 <% end -%>

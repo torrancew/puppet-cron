@@ -17,36 +17,40 @@
 # Requires:
 #
 # Sample Usage:
-# $jobs     = {
-#    'generate puppetdoc' => {
-#      minute      => '1',
-#      hour        => '*',
+# $jobs = {
+#    'daily' => {
+#      minute      => '45',
+#      hour        => '4',
 #      date        => '*',
 #      month       => '*',
 #      weekday     => '*',
-#      user        => 'root',
-#      command     => 'puppet doc --modulepath /etc/puppet/modules >/var/www/puppet_docs.mkd',
+#      user        => 'backup',
+#      command     => 'mysqldump --databases test_db test_db2 > daily.sql',
 #    },
-#    'backup mysql':
-#      minute      => '1',
+#    'weekly':
+#      minute      => '30',
 #      hour        => '3',
 #      date        => '*',
 #      month       => '*',
-#      weekday     => '*',
-#      environment => [ 'PATH="/usr/sbin:/usr/bin:/sbin:/bin"' ],
-#      command     => 'mysqldump -u root my_db >/mnt/backups/db/daily/my_db_$(date "+%Y%m%d").sql';
+#      weekday     => '0',
+#      user        => 'backup',
+#      command     => 'mysqldump --all-databases > weekly.sql',
 #    }
 #  }
 #
-#  cron::jobs { $name:
+#  cron::jobs { 'mysql_backups':
 #    jobs        => $jobs,
 #    environment => [
 #      'MAILTO=root',
-#      'PATH="/usr/bin:/bin"'];
+#      'PATH="/usr/bin:/bin"'],
+#    mode        => '0600'
 #  }
+#  
 define cron::jobs(
-  $jobs = {},
-  $environment = [], $mode = 0644, $ensure = 'present'
+  $jobs,
+  $environment = [],
+  $mode = '0644', 
+  $ensure = 'present'
 ) {
 
   case $ensure {
