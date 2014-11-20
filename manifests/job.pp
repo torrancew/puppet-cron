@@ -36,7 +36,7 @@
 #   }
 define cron::job(
   $command, $minute = '*', $hour = '*', $date = '*', $month = '*', $weekday = '*',
-  $environment = [], $user = 'root', $mode = 0644, $ensure = 'present'
+  $environment = [], $user = 'root', $mode = '0644', $ensure = 'present'
 ) {
 
   case $ensure {
