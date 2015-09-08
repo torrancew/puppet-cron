@@ -32,7 +32,7 @@
 
 define cron::daily(
   $command, $minute = 0, $hour = 0, $environment = [],
-  $user = 'root', $mode = 0644, $ensure = 'present'
+  $user = 'root', $mode = '0644', $ensure = 'present'
 ){
   cron::job {
     $title:
