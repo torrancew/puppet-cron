@@ -34,7 +34,8 @@ class cron::install (
     notify  => Service[$service_name],
   }
 
-  service { $service_name :
+  service { 'crond' :
+    name    => $service_name,
     ensure  => running,
     require => Package['cron'],
   }
