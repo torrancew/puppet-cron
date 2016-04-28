@@ -47,7 +47,7 @@ define cron::job(
   }
 
   if $ensure != 'absent' {
-    unless $command {
+    if $command {
       fail("Ensure is present, but no command specified!")
     }
   }
