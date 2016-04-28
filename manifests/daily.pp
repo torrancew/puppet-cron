@@ -1,7 +1,7 @@
 # Type: cron::daily
-# 
+#
 # This type creates a daily cron job via a file in /etc/cron.d
-# 
+#
 # Parameters:
 #   ensure - The state to ensure this resource exists in. Can be absent, present
 #     Defaults to 'present'
@@ -16,6 +16,7 @@
 #   mode - The mode to set on the created job file
 #     Defaults to 0644.
 #   command - The command to execute.
+#     Defaults to undef.
 #
 # Actions:
 #
@@ -31,8 +32,8 @@
 #   }
 
 define cron::daily(
-  $minute = 0, $hour = 0, $environment = [], $user = 'root',
-  $mode = 0644, $ensure = 'present', $command
+  $command = undef, $minute = 0, $hour = 0, $environment = [],
+  $user = 'root', $mode = '0644', $ensure = 'present'
 ){
   cron::job {
     $title:

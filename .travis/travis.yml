@@ -1,15 +1,28 @@
 language: ruby
-script:   "rake spec"
+script:
+  - 'bundle exec rake lint'
+  - 'bundle exec rake spec'
 rvm:
   - 1.8.7
   - 1.9.3
   - 2.0.0
+  - 2.1
+  - 2.2
 env:
-  - PUPPET_VERSION=2.7.22
-  - PUPPET_VERSION=3.2.2
+  - PUPPET_VERSION=2.7.26
+  - PUPPET_VERSION=3.8.7
+  - PUPPET_VERSION=4.4.2
 matrix:
   allow_failures:
+    - rvm: 1.8.7
+      env: PUPPET_VERSION=4.4.2
     - rvm: 2.0.0
-      env: PUPPET_VERSION=2.7.22
+      env: PUPPET_VERSION=2.7.26
+    - rvm: 2.1
+      env: PUPPET_VERSION=2.7.26
+    - rvm: 2.2
+      env: PUPPET_VERSION=2.7.26
+    - rvm: 2.2
+      env: PUPPET_VERSION=3.8.7
 gemfile: .travis/Gemfile
 

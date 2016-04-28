@@ -1,7 +1,7 @@
 # Type: cron::weekly
-# 
+#
 # This type creates a cron job via a file in /etc/cron.d
-# 
+#
 # Parameters:
 #   ensure - The state to ensure this resource exists in. Can be absent, present
 #     Defaults to 'present'
@@ -16,8 +16,9 @@
 #   user - The user the cron job should be executed as.
 #     Defaults to 'root'.
 #   mode - The mode to set on the created job file
-#     Defaults to 0644.
+#     Defaults to '0640'.
 #   command - The command to execute.
+#     Defaults to undef.
 #
 # Actions:
 #
@@ -34,8 +35,8 @@
 #   }
 
 define cron::weekly(
-  $minute = 0, $hour = 0, $weekday = 0, $environment = [],
-  $user = 'root', $mode = 0640, $ensure = 'present', $command
+  $command = undef, $minute = 0, $hour = 0, $weekday = 0, $user = 'root',
+  $mode = '0640', $ensure = 'present', $environment = []
 ) {
   cron::job {
     $title:
