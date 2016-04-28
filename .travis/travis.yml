@@ -1,7 +1,7 @@
 language: ruby
 script:
-  - 'rake lint'
-  - 'rake spec'
+  - 'bundle exec rake lint'
+  - 'bundle exec rake spec'
 rvm:
   - 1.8.7
   - 1.9.3
