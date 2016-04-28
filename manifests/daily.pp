@@ -16,6 +16,7 @@
 #   mode - The mode to set on the created job file
 #     Defaults to 0644.
 #   command - The command to execute.
+#     Defaults to undef.
 #
 # Actions:
 #
@@ -31,8 +32,8 @@
 #   }
 
 define cron::daily(
-  $command, $minute = 0, $hour = 0, $environment = [],
-  $user = 'root', $mode = 0644, $ensure = 'present'
+  $command = undef, $minute = 0, $hour = 0, $environment = [],
+  $user = 'root', $mode = '0644', $ensure = 'present'
 ){
   cron::job {
     $title:

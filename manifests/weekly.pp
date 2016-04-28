@@ -18,6 +18,7 @@
 #   mode - The mode to set on the created job file
 #     Defaults to '0640'.
 #   command - The command to execute.
+#     Defaults to undef.
 #
 # Actions:
 #
@@ -34,7 +35,7 @@
 #   }
 
 define cron::weekly(
-  $command, $minute = 0, $hour = 0, $weekday = 0, $user = 'root',
+  $command = undef, $minute = 0, $hour = 0, $weekday = 0, $user = 'root',
   $mode = '0640', $ensure = 'present', $environment = []
 ) {
   cron::job {

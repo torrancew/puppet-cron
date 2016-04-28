@@ -22,6 +22,7 @@
 #   user - The user the cron job should be executed as.
 #     Defaults to 'root'.
 #   command - The command to execute.
+#     Defaults to undef.
 #
 # Actions:
 #
@@ -35,14 +36,20 @@
 #       command     => 'puppet doc --modulepath /etc/puppet/modules >/var/www/puppet_docs.mkd';
 #   }
 define cron::job(
-  $command, $minute = '*', $hour = '*', $date = '*', $month = '*', $weekday = '*',
-  $environment = [], $user = 'root', $mode = 0644, $ensure = 'present'
+  $command = undef, $minute = '*', $hour = '*', $date = '*', $month = '*', $weekday = '*',
+  $environment = [], $user = 'root', $mode = '0644', $ensure = 'present'
 ) {
 
   case $ensure {
     'present': { $real_ensure = file }
     'absent':  { $real_ensure = absent }
     default:   { fail("Invalid value '${ensure}' used for ensure") }
+  }
+
+  if $ensure != 'absent' {
+    unless $command {
+      fail("Ensure is present, but no command specified!")
+    }
   }
 
   file {

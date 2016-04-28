@@ -11,8 +11,10 @@
 #     Defaults to an empty set ([]).
 #   mode - The mode to set on the created job file
 #     Defaults to 0644.
-#   user - The user the cron job should be executed as. Defaults to 'root'.
+#   user - The user the cron job should be executed as.
+#     Defaults to 'root'.
 #   command - The command to execute.
+#     Defaults to undef.
 #
 # Actions:
 #
@@ -26,7 +28,7 @@
 #       command     => 'puppet doc --modulepath /etc/puppet/modules >/var/www/puppet_docs.mkd';
 #   }
 define cron::hourly(
-  $command, $minute = 0, $environment = [],
+  $command = undef, $minute = 0, $environment = [],
   $user = 'root', $mode = '0644', $ensure = 'present'
 ) {
   cron::job {
