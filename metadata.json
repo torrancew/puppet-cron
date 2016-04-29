@@ -28,6 +28,7 @@
       "operatingsystem": "Gentoo"
     }
 	],
+  "dependencies": [],
   "requirements": {
     "name": "puppet",
     "version_requirement": ">= 2.6.0 < 5.0.0"
