@@ -12,8 +12,9 @@ env:
   - PUPPET_VERSION=2.7.26
   - PUPPET_VERSION=3.8.7
   - PUPPET_VERSION=4.4.2
+gemfile: .travis/Gemfile
 matrix:
-  allow_failures:
+  exclude:
     - rvm: 1.8.7
       env: PUPPET_VERSION=4.4.2
     - rvm: 2.0.0
@@ -24,5 +25,3 @@ matrix:
       env: PUPPET_VERSION=2.7.26
     - rvm: 2.2
       env: PUPPET_VERSION=3.8.7
-gemfile: .travis/Gemfile
-

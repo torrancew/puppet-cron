@@ -1,0 +1,26 @@
+{
+	"name": "torrancew-cron",
+	"version": "0.2.0",
+	"author": "torrancew",
+	"license": "Apache-2.0",
+	"summary": "A module to manage cron jobs via /etc/cron.d",
+	"source": "https://github.com/torrancew/puppet-cron",
+	"project_page": "https://forge.puppetlabs.com/torrancew/cron",
+	"issues_url": "https://github.com/torrancew/puppet-cron/issues",
+	"tags": ["cron"],
+	"operatingsystem_support": [
+		{
+			"operatingsystem":"RedHat",
+			"operatingsystemrelease": [ "5.0", "6.0", "7.0" ]
+		},
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [ "8.0", "7.0", "6.0" ]
+    },
+		{
+			"operatingsystem": "Ubuntu",
+			"operatingsystemrelease": [ "16.04", "14.04", "12.04", "10.04" ]
+		}
+	],
+	"data_provider": "none"
+}

@@ -1,3 +1,11 @@
+v0.2.0: 2016-04-28
+Changes:
+  * Add support for Ubuntu, Gentoo, Archlinux, RedHat 5
+  * Allows specifying desired version of cron package
+  * Allow command to be unset when $ensure = absent
+  * Puppet v4 Compatibility (file modes are now strings)
+  * Adds service management
+
 v0.1.0: 2013-08-27
 Changes:
   * Add support for the "ensure" parameter

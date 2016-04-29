@@ -159,8 +159,8 @@ Example:
   * Andy Shinn (@andyshinn)             - RedHat derivatives package name fix 
   * Chris Weyl (@RsrchBoy)              - Fixed Puppet 3.2 deprecation warnings
   * Mathew Archibald (@mattyindustries) - Fixed file ownership issues
+  * Nathan Sullivan (@CpuID)            - Support for specifying package version
   * The Community                       - Continued improvement of this module via bugs and patches
-
 
 ## TODO:
 
