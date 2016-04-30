@@ -13,7 +13,8 @@
 class cron::service {
   $service_name = $::operatingsystem ? {
     /(RedHat|CentOS|Amazon|OracleLinux)/ => 'crond',
-    default     => 'cron',
+    'Archlinux'                          => 'cronie',
+    default                              => 'cron',
   }
 
   service {
