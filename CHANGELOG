@@ -1,3 +1,6 @@
+v0.2.1: 2016-04-30
+Changes:
+  * Fix service support on Archlinux
 v0.2.0: 2016-04-28
 Changes:
   * Add support for Ubuntu, Gentoo, Archlinux, RedHat 5
