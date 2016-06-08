@@ -41,9 +41,9 @@ define cron::job(
 ) {
 
   case $ensure {
-    'present': { $real_ensure = file }
-    'absent':  { $real_ensure = absent }
-    default:   { fail("Invalid value '${ensure}' used for ensure") }
+    'present', 'disabled': { $real_ensure = file }
+    'absent':              { $real_ensure = absent }
+    default:               { fail("Invalid value '${ensure}' used for ensure") }
   }
 
   if $ensure != 'absent' {
