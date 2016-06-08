@@ -13,5 +13,4 @@
    end -%>
 
 # Job Definition
-<%= @minute %> <%= @hour %> <%= @date %> <%= @month %> <%= @weekday %>  <%= @user %>  <%= @command %>
-
+<%- if @ensure == 'disabled' -%>#<%- end -%><%= @minute %> <%= @hour %> <%= @date %> <%= @month %> <%= @weekday %>  <%= @user %>  <%= @command %>
