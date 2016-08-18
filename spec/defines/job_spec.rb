@@ -33,6 +33,7 @@ describe 'cron::job' do
       :user        => 'admin',
       :mode        => '0640',
       :command     => 'mysqldump -u root test_db >some_file',
+      :comment     => 'do this'
     }}
     let( :cron_timestamp ) { get_timestamp( params ) }
 
@@ -48,6 +49,8 @@ describe 'cron::job' do
         /\s+#{params[:user]}\s+/
       ).with_content(
         /\s+#{params[:command]}\n/
+      ).with_content(
+        /\s+#{params[:comment]}\n/
       )
     end
   end

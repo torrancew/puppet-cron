@@ -19,6 +19,8 @@
 #     Defaults to '0640'.
 #   command - The command to execute.
 #     Defaults to undef.
+#   comment - Optional comment to add to the crontab file
+#     Defaults to undef
 #
 # Actions:
 #
@@ -36,7 +38,7 @@
 
 define cron::weekly(
   $command = undef, $minute = 0, $hour = 0, $weekday = 0, $user = 'root',
-  $mode = '0640', $ensure = 'present', $environment = []
+  $mode = '0640', $ensure = 'present', $environment = [], $comment = undef,
 ) {
   cron::job {
     $title:
@@ -49,7 +51,8 @@ define cron::weekly(
       user        => $user,
       environment => $environment,
       mode        => $mode,
-      command     => $command;
+      command     => $command,
+      comment     => $comment,
   }
 }
 

@@ -42,6 +42,7 @@ It allows specifying the following parameters:
   * user
   * command
   * environment
+  * comment
 
 Example:
   This would run the command "mysqldump -u root mydb" as root at 2:40 AM every day:
@@ -55,7 +56,8 @@ Example:
         weekday     => '*',
         user        => 'root',
         command     => 'mysqldump -u root mydb',
-        environment => [ 'MAILTO=root', 'PATH="/usr/bin:/bin"' ];
+        environment => [ 'MAILTO=root', 'PATH="/usr/bin:/bin"' ],
+        comment     => 'This job updates so and so then copies this to that',
     }
 
 ### cron::hourly
@@ -68,6 +70,7 @@ It allows specifying the following parameters:
   * user
   * command
   * environment
+  * comment
 
 Example:
   This would run the command "mysqldump -u root mydb" as root on the 20th minute of every hour:
@@ -78,6 +81,7 @@ Example:
         user        => 'root',
         command     => 'mysqldump -u root mydb',
         environment => "MAILTO=root\nPATH='/usr/bin:/bin'";
+        comment     => 'This job updates so and so then copies this to that',
     }
 
 ### cron::daily
@@ -91,6 +95,7 @@ It allows specifying the following parameters:
   * user
   * command
   * environment
+  * comment
 
 Example:
   This would run the command "mysqldump -u root mydb" as root at 2:40 AM every day, like the above generic example:
@@ -101,6 +106,7 @@ Example:
         hour    => '2',
         user    => 'root',
         command => 'mysqldump -u root mydb';
+        comment => 'This job updates so and so then copies this to that',
     }
 
 ### cron::weekly
@@ -115,6 +121,7 @@ It allows specifying the following parameters:
   * user
   * command
   * environment
+  * comment
 
 Example:
   This would run the command "mysqldump -u root mydb" as root at 4:40 AM every Sunday, like the above generic example:
@@ -126,6 +133,7 @@ Example:
         weekday => '0',
         user    => 'root',
         command => 'mysqldump -u root mydb';
+        comment => 'This job updates so and so then copies this to that',
     }
 
 ### cron::monthly
@@ -140,6 +148,7 @@ It allows specifying the following parameters:
   * user
   * command
   * environment
+  * comment
 
 Example:
   This would run the command "mysqldump -u root mydb" as root at 3:40 AM the 1st of every month, like the above generic example:
@@ -151,6 +160,7 @@ Example:
         date    => '1',
         user    => 'root',
         command => 'mysqldump -u root mydb';
+        comment => 'This job updates so and so then copies this to that',
     }
 
 ## Contributors:

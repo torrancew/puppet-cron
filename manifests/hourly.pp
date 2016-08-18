@@ -15,6 +15,8 @@
 #     Defaults to 'root'.
 #   command - The command to execute.
 #     Defaults to undef.
+#   comment - Optional comment to add to the crontab file
+#     Defaults to undef
 #
 # Actions:
 #
@@ -28,7 +30,7 @@
 #       command     => 'puppet doc --modulepath /etc/puppet/modules >/var/www/puppet_docs.mkd';
 #   }
 define cron::hourly(
-  $command = undef, $minute = 0, $environment = [],
+  $command = undef, $minute = 0, $environment = [], $comment = undef,
   $user = 'root', $mode = '0644', $ensure = 'present'
 ) {
   cron::job {
@@ -42,7 +44,8 @@ define cron::hourly(
       user        => $user,
       environment => $environment,
       mode        => $mode,
-      command     => $command;
+      command     => $command,
+      comment     => $comment,
   }
 }
 
