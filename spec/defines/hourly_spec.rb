@@ -4,7 +4,8 @@ describe 'cron::hourly' do
   let( :title )  { 'mysql_backup' }
   let( :params ) {{
     :minute  => '59',
-    :command => 'mysqldump -u root test_db >some_file'
+    :command => 'mysqldump -u root test_db >some_file',
+    :comment => 'do this'
   }}
 
   it do
@@ -17,7 +18,8 @@ describe 'cron::hourly' do
       'user'        => params[:user] || 'root',
       'environment' => params[:environment] || [],
       'mode'        => params[:mode] || '0644',
-      'command'     => params[:command]
+      'command'     => params[:command],
+      'comment'     => params[:comment]
     )
   end
 end

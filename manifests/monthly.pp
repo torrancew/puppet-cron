@@ -19,6 +19,8 @@
 #     Defaults to 0644.
 #   command - The command to execute.
 #     Defaults to undef.
+#   comment - Optional comment to add to the crontab file
+#     Defaults to undef
 #
 # Actions:
 #
@@ -35,7 +37,7 @@
 #   }
 
 define cron::monthly(
-  $command = undef, $minute = 0, $hour = 0, $date = 1,
+  $command = undef, $minute = 0, $hour = 0, $date = 1, $comment = undef,
   $environment = [], $user = 'root', $mode = '0644', $ensure = 'present'
 ) {
   cron::job {
@@ -49,7 +51,8 @@ define cron::monthly(
       user        => $user,
       environment => $environment,
       mode        => $mode,
-      command     => $command;
+      command     => $command,
+      comment     => $comment,
   }
 }
 

@@ -6,7 +6,8 @@ describe 'cron::weekly' do
     :minute  => '59',
     :hour    => '1',
     :weekday => '2',
-    :command => 'mysqldump -u root test_db >some_file'
+    :command => 'mysqldump -u root test_db >some_file',
+    :comment => 'do this'
   }}
 
   it do
@@ -19,7 +20,8 @@ describe 'cron::weekly' do
       'user'        => params[:user] || 'root',
       'environment' => params[:environment] || [],
       'mode'        => params[:mode] || '0640',
-      'command'     => params[:command]
+      'command'     => params[:command],
+      'comment'     => params[:comment]
     )
   end
 end

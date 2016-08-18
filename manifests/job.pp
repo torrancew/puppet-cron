@@ -23,6 +23,8 @@
 #     Defaults to 'root'.
 #   command - The command to execute.
 #     Defaults to undef.
+#   comment - Optional comment to add to the crontab file
+#     Defaults to undef
 #
 # Actions:
 #
@@ -37,7 +39,7 @@
 #   }
 define cron::job(
   $command = undef, $minute = '*', $hour = '*', $date = '*', $month = '*', $weekday = '*',
-  $environment = [], $user = 'root', $mode = '0644', $ensure = 'present'
+  $environment = [], $user = 'root', $mode = '0644', $ensure = 'present', $comment = undef,
 ) {
 
   case $ensure {
