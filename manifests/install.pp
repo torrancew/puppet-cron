@@ -24,6 +24,7 @@ class cron::install (
     'Ubuntu'    => 'cron',
     'Gentoo'    => 'sys-process/vixie-cron',
     'Archlinux' => 'cronie',
+    'Fedora'    => 'cronie',
     default     => 'cron',
   }
 

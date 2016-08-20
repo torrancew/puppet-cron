@@ -14,6 +14,7 @@ class cron::service {
   $service_name = $::operatingsystem ? {
     /(RedHat|CentOS|Amazon|OracleLinux)/ => 'crond',
     'Archlinux'                          => 'cronie',
+    'Fedora'                             => 'crond',
     default                              => 'cron',
   }
 

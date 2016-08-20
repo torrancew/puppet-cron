@@ -26,6 +26,10 @@
     },
     {
       "operatingsystem": "Gentoo"
+    },
+    {
+      "operatingsystem": "Fedora",
+      "operatingsystemrelease": [ "24" ]
     }
   ],
   "dependencies": [],
