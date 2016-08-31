@@ -16,7 +16,7 @@
 #   user - The user the cron job should be executed as.
 #     Defaults to 'root'.
 #   mode - The mode to set on the created job file
-#     Defaults to '0640'.
+#     Defaults to '0644'.
 #   command - The command to execute.
 #     Defaults to undef.
 #
@@ -36,7 +36,7 @@
 
 define cron::weekly(
   $command = undef, $minute = 0, $hour = 0, $weekday = 0, $user = 'root',
-  $mode = '0640', $ensure = 'present', $environment = []
+  $mode = '0644', $ensure = 'present', $environment = []
 ) {
   cron::job {
     $title:
