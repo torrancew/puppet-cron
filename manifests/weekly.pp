@@ -36,7 +36,7 @@
 
 define cron::weekly(
   $command = undef, $minute = 0, $hour = 0, $weekday = 0, $user = 'root',
-  $mode = '0640', $ensure = 'present', $environment = []
+  $mode = '0644', $ensure = 'present', $environment = []
 ) {
   cron::job {
     $title:
