@@ -1,0 +1,18 @@
+###########################################################################################
+### This file is managed by puppet, and is refreshed regularly. Edit at your own peril! ###
+###########################################################################################
+## <%= @name %> Cron Jobs
+
+# Environment Settings
+<% Array(@environment).join("\n").split(%r{\n}).each do |env_var|
+     if env_var.match(%r{\S+=\S+}) -%>
+<%= env_var %>
+<%   elsif env_var.match(%r{\S}) -%>
+## Possible input error: <%= env_var %>
+<%   end
+   end -%>
+
+<% Array(@jobs).each do | name, job | %>
+# <%= name %>
+<%= job['minute'] %> <%= job['hour'] %> <%= job['date'] %> <%= job['month'] %> <%= job['weekday'] %> <%= job['user'] %> <%= job['command'] %>
+<% end -%>
