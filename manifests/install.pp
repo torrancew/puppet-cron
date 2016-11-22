@@ -14,7 +14,7 @@
 #   Instead, use the *cron* class.
 
 class cron::install (
-  $package_ensure = 'installed'
+  $package_ensure = 'installed',
 ) {
   $package_name = $::operatingsystem ? {
     /(RedHat|CentOS|Amazon|OracleLinux)/ => $::lsbmajdistrelease ? {
@@ -27,10 +27,20 @@ class cron::install (
     default     => 'cron',
   }
 
-  package {
-    'cron':
-      ensure => $package_ensure,
-      name   => $package_name;
+  $service_name = $::operatingsystem ? {
+    /(RedHat|CentOS|Amazon|OracleLinux)/ => 'crond',
+    default                              => 'cron',
+  }
+
+  package { 'cron':
+    ensure  => $package_ensure,
+    name    => $package_name,
+    notify  => Service[$service_name],
+  }
+
+  service { 'crond' :
+    name    => $service_name,
+    ensure  => running,
+    require => Package['cron'],
   }
 }
-
