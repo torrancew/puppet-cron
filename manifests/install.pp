@@ -27,10 +27,15 @@ class cron::install (
     default     => 'cron',
   }
 
-  package {
-    'cron':
-      ensure => $package_ensure,
-      name   => $package_name;
+  package { 'cron':
+    ensure  => $package_ensure,
+    name    => $package_name
+    notify  => Service["crond"]
+  }
+
+  service { "crond" :
+    ensure  => running,
+    require => Package["cron"]
   }
 }
 
