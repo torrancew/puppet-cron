@@ -17,7 +17,7 @@ class cron::install (
   $package_ensure = 'installed'
 ) {
   $package_name = $::operatingsystem ? {
-    /(RedHat|CentOS|Amazon|OracleLinux)/ => $::lsbmajdistrelease ? {
+    /(RedHat|CentOS|Amazon|OracleLinux)/ => $::operatingsystemmajrelease ? {
       5       => 'vixie-cron',
       default => 'cronie',
     },
